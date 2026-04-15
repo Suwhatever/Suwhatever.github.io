@@ -7,39 +7,47 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
 <style>
 :root{
-  --navy:#0f1e3c;
-  --navy-light:#1a2f52;
-  --navy-mid:#243b66;
-  --amber:#f5a623;
-  --amber-light:#ffd280;
-  --green:#22c55e;
-  --yellow:#eab308;
-  --red:#ef4444;
-  --bg:#f0f4f8;
+  /* Deep ocean blues */
+  --navy:#052e45;
+  --navy-light:#0a4d6e;
+  --navy-mid:#0d6184;
+  /* Teal-green accents */
+  --teal:#0eb5a0;
+  --teal-light:#4ecdc4;
+  --cyan:#22d3ee;
+  /* Status greens */
+  --green:#10b981;
+  --green-light:#6ee7b7;
+  --sky:#38bdf8;
+  /* Neutrals */
+  --bg:#e6f4f7;
   --card:#ffffff;
-  --text:#1e293b;
-  --muted:#64748b;
-  --border:#e2e8f0;
+  --text:#062534;
+  --muted:#3d7a8a;
+  --border:#b8dde6;
   --radius:12px;
-  --shadow:0 2px 12px rgba(15,30,60,.10);
-  --shadow-lg:0 8px 32px rgba(15,30,60,.18);
+  --shadow:0 2px 14px rgba(5,46,69,.10);
+  --shadow-lg:0 8px 36px rgba(5,46,69,.18);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
 
 /* HERO */
-.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);color:#fff;padding:48px 24px 40px}
-.hero-inner{max-width:1200px;margin:0 auto}
-.hero-badge{display:inline-block;background:rgba(245,166,35,.18);border:1px solid var(--amber);color:var(--amber-light);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:16px}
-.hero h1{font-size:clamp(26px,5vw,44px);font-weight:800;line-height:1.15;margin-bottom:12px}
-.hero h1 span{color:var(--amber)}
-.hero p{font-size:16px;color:#94a3c0;max-width:600px;line-height:1.6}
+.hero{background:linear-gradient(135deg,var(--navy) 0%,#0a5c72 55%,#0e8080 100%);color:#fff;padding:56px 24px 48px;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-60px;right:-80px;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(14,181,160,.22) 0%,transparent 70%)}
+.hero::after{content:'';position:absolute;bottom:-40px;left:10%;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(34,211,238,.12) 0%,transparent 70%)}
+.hero-inner{max-width:1200px;margin:0 auto;position:relative;z-index:1}
+.hero-badge{display:inline-block;background:rgba(14,181,160,.20);border:1px solid var(--teal);color:var(--teal-light);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:16px}
+.hero h1{font-size:clamp(26px,5vw,46px);font-weight:800;line-height:1.12;margin-bottom:12px}
+.hero h1 span{background:linear-gradient(90deg,var(--teal-light),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:16px;color:#8ecfdb;max-width:600px;line-height:1.65}
 
 /* KPI CARDS */
 .kpi-section{max-width:1200px;margin:0 auto;padding:0 24px}
 .kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:-28px;margin-bottom:32px}
-.kpi-card{background:var(--card);border-radius:var(--radius);padding:20px 24px;box-shadow:var(--shadow-lg);border-top:4px solid var(--amber);position:relative;overflow:hidden}
-.kpi-card::after{content:'';position:absolute;right:-20px;bottom:-20px;width:80px;height:80px;border-radius:50%;background:rgba(245,166,35,.06)}
+.kpi-card{background:var(--card);border-radius:var(--radius);padding:20px 24px;box-shadow:var(--shadow-lg);border-top:4px solid transparent;background-clip:padding-box;position:relative;overflow:hidden}
+.kpi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--teal),var(--cyan))}
+.kpi-card::after{content:'';position:absolute;right:-20px;bottom:-20px;width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,rgba(14,181,160,.08) 0%,transparent 70%)}
 .kpi-label{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
 .kpi-value{font-size:clamp(22px,4vw,32px);font-weight:800;color:var(--navy);line-height:1}
 .kpi-sub{font-size:12px;color:var(--muted);margin-top:6px}
@@ -50,8 +58,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 /* TABS */
 .tab-nav{display:flex;gap:4px;background:var(--card);padding:6px;border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:24px;flex-wrap:wrap}
 .tab-btn{flex:1;min-width:130px;padding:10px 16px;border:none;background:transparent;cursor:pointer;border-radius:8px;font-size:14px;font-weight:600;color:var(--muted);transition:all .2s;white-space:nowrap}
-.tab-btn.active{background:var(--navy);color:#fff;box-shadow:0 2px 8px rgba(15,30,60,.25)}
-.tab-btn:hover:not(.active){background:var(--bg);color:var(--text)}
+.tab-btn.active{background:linear-gradient(135deg,var(--navy-light),var(--navy-mid));color:#fff;box-shadow:0 2px 10px rgba(5,46,69,.30)}
+.tab-btn:hover:not(.active){background:rgba(14,181,160,.08);color:var(--navy)}
 .tab-panel{display:none}
 .tab-panel.active{display:block}
 
@@ -59,43 +67,43 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .table-wrap{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
 .table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
 table{width:100%;border-collapse:collapse;font-size:14px}
-thead{background:var(--navy)}
-th{padding:13px 14px;text-align:left;color:#c8d4e8;font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;cursor:pointer;user-select:none;position:relative}
-th:hover{background:var(--navy-light);color:#fff}
-th.sort-asc::after{content:' ▲';color:var(--amber);font-size:10px}
-th.sort-desc::after{content:' ▼';color:var(--amber);font-size:10px}
+thead{background:linear-gradient(90deg,var(--navy) 0%,var(--navy-mid) 100%)}
+th{padding:13px 14px;text-align:left;color:#a8d8e4;font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;cursor:pointer;user-select:none;position:relative}
+th:hover{background:rgba(255,255,255,.08);color:#fff}
+th.sort-asc::after{content:' ▲';color:var(--teal-light);font-size:10px}
+th.sort-desc::after{content:' ▼';color:var(--teal-light);font-size:10px}
 tbody tr{border-bottom:1px solid var(--border);transition:background .15s}
 tbody tr:last-child{border-bottom:none}
-tbody tr:hover{background:#f8faff}
+tbody tr:hover{background:rgba(14,181,160,.05)}
 td{padding:12px 14px;vertical-align:middle}
 td.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:500}
-.sticky-col{position:sticky;left:0;background:#fff;z-index:2;box-shadow:2px 0 8px rgba(0,0,0,.06)}
+.sticky-col{position:sticky;left:0;background:#fff;z-index:2;box-shadow:2px 0 8px rgba(5,46,69,.08)}
 thead .sticky-col{background:var(--navy)}
 
 /* SCORE BAR */
 .score-cell{display:flex;align-items:center;gap:8px;min-width:110px}
-.score-bar-bg{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
-.score-bar{height:100%;border-radius:3px;background:linear-gradient(90deg,#22c55e,#86efac)}
-.score-num{font-size:13px;font-weight:700;color:var(--navy);min-width:32px}
+.score-bar-bg{flex:1;height:7px;background:var(--border);border-radius:4px;overflow:hidden}
+.score-bar{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--teal),var(--sky))}
+.score-num{font-size:13px;font-weight:700;color:var(--navy-light);min-width:32px}
 
 /* VALUE GAP BADGE */
-.gap-badge{display:inline-block;padding:3px 9px;border-radius:20px;font-size:12px;font-weight:600}
-.gap-high{background:#dcfce7;color:#15803d}
-.gap-mid{background:#fef9c3;color:#854d0e}
-.gap-low{background:#f1f5f9;color:#475569}
+.gap-badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:12px;font-weight:600}
+.gap-high{background:#d1faf3;color:#065f46}
+.gap-mid{background:#dbeafe;color:#1e40af}
+.gap-low{background:#e0f2fe;color:#0369a1}
 
 /* LISTING LINK */
-.listing-link{color:var(--navy);font-weight:600;font-size:13px;text-decoration:none;display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border:1px solid var(--border);border-radius:6px;transition:all .15s;white-space:nowrap}
-.listing-link:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+.listing-link{color:var(--navy-light);font-weight:600;font-size:13px;text-decoration:none;display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border:1px solid var(--border);border-radius:6px;transition:all .18s;white-space:nowrap}
+.listing-link:hover{background:linear-gradient(135deg,var(--navy-light),var(--navy-mid));color:#fff;border-color:transparent}
 .listing-link svg{width:12px;height:12px}
 
 /* TYPE BADGE */
-.type-badge{display:inline-block;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:600;background:#eff6ff;color:#1d4ed8}
+.type-badge{display:inline-block;padding:3px 9px;border-radius:20px;font-size:11px;font-weight:600;background:#cffafe;color:#164e63}
 
 /* MOBILE CARDS — listings only */
 .card-grid{display:none;flex-direction:column;gap:12px;padding:16px}
 .prop-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
-.prop-card-header{background:var(--navy);color:#fff;padding:14px 16px;display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.prop-card-header{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);color:#fff;padding:14px 16px;display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
 .prop-card-title{font-size:14px;font-weight:700;line-height:1.3}
 .prop-card-body{padding:14px 16px;display:grid;grid-template-columns:1fr 1fr;gap:8px 12px}
 .prop-card-row{display:flex;flex-direction:column;gap:2px}
@@ -105,29 +113,29 @@ thead .sticky-col{background:var(--navy)}
 
 /* ALGORITHM SECTION */
 .algo-section{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-top:32px;margin-bottom:32px}
-.algo-header{background:var(--navy);padding:20px 28px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none}
+.algo-header{background:linear-gradient(135deg,var(--navy) 0%,#0a5c72 100%);padding:20px 28px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none}
 .algo-header h2{color:#fff;font-size:18px;font-weight:700}
-.algo-chevron{color:var(--amber);font-size:20px;transition:transform .3s;flex-shrink:0}
+.algo-chevron{color:var(--teal-light);font-size:20px;transition:transform .3s;flex-shrink:0}
 .algo-chevron.open{transform:rotate(180deg)}
 .algo-body{padding:28px;display:none}
 .algo-body.open{display:block}
 .algo-intro{color:var(--muted);font-size:15px;line-height:1.7;margin-bottom:24px}
 .weight-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:28px}
-.weight-card{background:var(--bg);border-radius:10px;padding:16px;border-left:4px solid var(--amber)}
+.weight-card{background:linear-gradient(135deg,#f0fafb,#e6f4f7);border-radius:10px;padding:16px;border-left:4px solid var(--teal)}
 .weight-card .w-label{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:4px}
-.weight-card .w-pct{font-size:26px;font-weight:800;color:var(--amber)}
+.weight-card .w-pct{font-size:28px;font-weight:800;background:linear-gradient(90deg,var(--teal),var(--sky));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .weight-card .w-desc{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5}
 .algo-examples h3{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:16px}
 .example-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
-.example-card{background:var(--bg);border-radius:10px;padding:16px;border:1px solid var(--border)}
+.example-card{background:linear-gradient(135deg,#f0fafb,#e6f4f7);border-radius:10px;padding:16px;border:1px solid #b8dde6}
 .example-card .ex-title{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:8px}
 .example-card .ex-row{font-size:12px;color:var(--muted);margin-bottom:3px}
 .example-card .ex-row strong{color:var(--text)}
-.algo-note{margin-top:20px;padding:14px 18px;background:#fff8ed;border-left:4px solid var(--amber);border-radius:6px;font-size:13px;color:#92400e;line-height:1.6}
+.algo-note{margin-top:20px;padding:14px 18px;background:#e6fbf8;border-left:4px solid var(--teal);border-radius:6px;font-size:13px;color:#065f46;line-height:1.6}
 
 /* FOOTER */
-footer{background:var(--navy);color:#6e83a8;text-align:center;padding:20px 24px;font-size:13px}
-footer strong{color:var(--amber)}
+footer{background:linear-gradient(90deg,var(--navy) 0%,#0a5c72 100%);color:#6cbdcc;text-align:center;padding:20px 24px;font-size:13px}
+footer strong{color:var(--teal-light)}
 
 /* RESPONSIVE */
 @media(max-width:768px){
@@ -207,25 +215,25 @@ footer strong{color:var(--amber)}
             <div class="ex-title">Apartment · Qormi</div>
             <div class="ex-row">Price: <strong>€230,000</strong> · Area: <strong>141 m²</strong></div>
             <div class="ex-row">€/m²: <strong>~€1,631</strong> vs local median <strong>~€2,626</strong></div>
-            <div class="ex-row">Value gap: <strong style="color:#15803d">37.9% below median</strong></div>
+            <div class="ex-row">Value gap: <strong style="color:#0a7c5c">37.9% below median</strong></div>
           </div>
           <div class="example-card">
             <div class="ex-title">Apartment · Mosta</div>
             <div class="ex-row">Price: <strong>€290,000</strong> · Area: <strong>179 m²</strong></div>
             <div class="ex-row">€/m²: <strong>~€1,620</strong> vs local median <strong>~€3,150</strong></div>
-            <div class="ex-row">Value gap: <strong style="color:#15803d">48.6% below median</strong></div>
+            <div class="ex-row">Value gap: <strong style="color:#0a7c5c">48.6% below median</strong></div>
           </div>
           <div class="example-card">
             <div class="ex-title">Apartment · Birkirkara</div>
             <div class="ex-row">Price: <strong>€290,000</strong> · Area: <strong>232 m²</strong></div>
             <div class="ex-row">€/m²: <strong>~€1,250</strong> vs local median <strong>~€2,954</strong></div>
-            <div class="ex-row">Value gap: <strong style="color:#15803d">57.7% below median</strong></div>
+            <div class="ex-row">Value gap: <strong style="color:#0a7c5c">57.7% below median</strong></div>
           </div>
           <div class="example-card">
             <div class="ex-title">Penthouse · Fgura</div>
             <div class="ex-row">Price: <strong>€235,000</strong> · Area: <strong>145 m²</strong></div>
             <div class="ex-row">€/m²: <strong>~€1,621</strong> vs local median <strong>~€3,106</strong></div>
-            <div class="ex-row">Value gap: <strong style="color:#15803d">47.8% below median</strong></div>
+            <div class="ex-row">Value gap: <strong style="color:#0a7c5c">47.8% below median</strong></div>
           </div>
         </div>
       </div>
